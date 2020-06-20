@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-
+import Search from '../Search/index';
 import './Menu.css';
 
 const Menu = () => {
-  const [showMenu, setShowMenu] = useState(initialState);
+  const [showMenu, setShowMenu] = useState(true);
 
   const showData = () => {
-    console.log('click');
+    setShowMenu(false);
   };
 
   return (
     <div className="Menu-container">
-      <div className="menu">
-        <button onClick={() => showData()}>Menú</button>
-      </div>
+      {showMenu ? (
+        <div className="Menu">
+          <button onClick={() => showData()}>Menú</button>
+        </div>
+      ) : (
+        <Search />
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .Menu-container {
   position: absolute;
-  top: 30px;
+  top: 0;
   color: white;
 }
 
@@ -9,4 +9,11 @@
   padding: 15px;
   color: white;
   border: none;
+  outline: none;
+}
+
+.Menu-radios {
+  background-color: #16293a;
+  height: 99vh;
+  width: 300px;
 }
