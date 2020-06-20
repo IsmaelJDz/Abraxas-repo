@@ -1,6 +1,6 @@
 ## Fullstack MERN Tasks
 
-![Captura de la app](./.readme-static/map.png)
+![Captura de la app](./.static-files/map.png)
 
 [ver la aplicación](https://fullstack-mern.netlify.app/)
 
