@@ -3,7 +3,7 @@ import Mapa from './Components/Map/Map'
 import PolygonState from './context/polygonState'
 import './Mapa.scss'
 
-function App() {
+function App () {
   return (
     <div className='App'>
       <PolygonState>

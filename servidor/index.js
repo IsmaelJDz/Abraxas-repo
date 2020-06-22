@@ -9,8 +9,10 @@ app.use(cors());
 
 app.use(express.json({ extended: true }));
 
+const PORT = process.env.PORT || 4000;
+
 app.use('/', require('./routes/'));
 
-app.listen(4000, () => {
-  console.log('server');
+app.listen(PORT, () => {
+  console.log(`El servidor esta funcionando en el puerto ${PORT}`);
 });

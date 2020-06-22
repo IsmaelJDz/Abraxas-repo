@@ -2,7 +2,7 @@ import { GET_DATA } from '../types'
 
 const InitialState = {
   coordinates: [],
-  estado: '',
+  estado: ''
 }
 
 export default (state = InitialState, action) => {
@@ -11,7 +11,7 @@ export default (state = InitialState, action) => {
       return {
         ...state,
         coordinates: action.payload.data[0].geometry.coordinates,
-        estado: action.payload.estado,
+        estado: action.payload.data[0].name
       }
     default:
       return state
