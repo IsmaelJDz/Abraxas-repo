@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Radio from '@material-ui/core/Radio'
 import { withStyles } from '@material-ui/core/styles'
 import { blue } from '@material-ui/core/colors'
@@ -9,7 +9,6 @@ import './Search.scss'
 import Logo from '../../images/Logo.png'
 
 import PolygonContext from '../../context/polygonContext'
-import useFetchData from '../../hook/useFetchData'
 
 const BlueRadio = withStyles({
   root: {
@@ -22,8 +21,12 @@ const BlueRadio = withStyles({
 })(props => <Radio color='default' {...props} />)
 
 const Search = props => {
+  const PolygonsContext = useContext(PolygonContext)
+  const { traerCoordenadas, estado } = PolygonsContext
+
   const handleChange = event => {
-    const estado = event.target.value
+    const estadoInput = event.target.value
+    traerCoordenadas(estadoInput)
   }
 
   const handleClick = () => {

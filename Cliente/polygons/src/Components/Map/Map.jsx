@@ -4,8 +4,6 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 import Menu from '../Menu'
 import './Map.scss'
 
-import useFetchData from '../../hook/useFetchData'
-
 import PolygonContext from '../../context/polygonContext'
 
 const Mapa = () => {
@@ -17,21 +15,22 @@ const Mapa = () => {
     'fill-color': '#6F788A',
     'fill-opacity': 0.7,
   }
-  const data = useFetchData('GDL')
-
-  useEffect(() => {
-    traerCoordenadas(data)
-    // eslint-disable-next-line
-  }, [data])
 
   const PolygonsContext = useContext(PolygonContext)
   const { traerCoordenadas, coordinates } = PolygonsContext
+
+  const defaultState = 'GDL'
+
+  useEffect(() => {
+    traerCoordenadas(defaultState)
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
       <div className='Mapa-container'>
         <Map
-          style='mapbox://styles/mapbox/streets-v9'
+          style={'mapbox://styles/mapbox/streets-v9'}
           center={[-101.9846394837815, 20.45716997382206]}
           zoom={[7]}
           containerStyle={{
