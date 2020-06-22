@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const PolygonState = props => {
   const initialState = {
-    coordinates: []
+    coordinates: [],
   }
 
   const [state, dispatch] = useReducer(PolygonReducer, initialState)
@@ -17,7 +17,7 @@ const PolygonState = props => {
    */
   const traerCoordenadas = async estado => {
     try {
-      const BASEURL = `http://localhost:4000/${estado}`
+      const BASEURL = `${process.env.REACT_APP_BACKEND_URL}${estado}`
       const fetchData = async () => {
         const result = await axios.get(BASEURL)
         dispatch({ type: GET_DATA, payload: result })
@@ -33,7 +33,7 @@ const PolygonState = props => {
       value={{
         coordinates: state.coordinates,
         estado: state.estado,
-        traerCoordenadas
+        traerCoordenadas,
       }}
     >
       {props.children}

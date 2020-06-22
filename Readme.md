@@ -2,7 +2,7 @@
 
 ![App capture](./.static-files/PolygomMap.png)
 
-[see aplication](https://fullstack-mern.netlify.app/)
+[see aplication](https://polygonsapp.netlify.app/)
 
 -- Technologies
 React Hooks<br>
@@ -23,11 +23,11 @@ Run the command<br>
 
 -- npm run dev
 
+## initualize React app
+
+-- npm run start
+
 ## endPoints dev
 
 http://localhost:4000/CDMX
 http://localhost:4000/GDL
-
-## initualize React app
-
--- npm run start

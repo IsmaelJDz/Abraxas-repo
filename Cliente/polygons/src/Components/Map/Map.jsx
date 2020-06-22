@@ -8,12 +8,12 @@ import Menu from '../Menu'
 
 const Mapa = () => {
   const Map = ReactMapboxGl({
-    accessToken: 'pk.eyJ1IjoiaXNtYWVsamR6NyIsImEiOiJja2Jtdjg3bG4xbXFiMnhxaTVuazlqajk5In0.kdZZsH6POuos7P2yF0HqoQ'
+    accessToken: 'pk.eyJ1IjoiaXNtYWVsamR6NyIsImEiOiJja2Jtdjg3bG4xbXFiMnhxaTVuazlqajk5In0.kdZZsH6POuos7P2yF0HqoQ',
   })
 
   const polygonPaint = {
     'fill-color': '#6F788A',
-    'fill-opacity': 0.7
+    'fill-opacity': 0.7,
   }
 
   const PolygonsContext = useContext(PolygonContext)
@@ -36,7 +36,7 @@ const Mapa = () => {
           zoom={[7]}
           containerStyle={{
             height: '98vh',
-            width: '80vw'
+            width: '80vw',
           }}
         >
           <Layer type='fill' paint={polygonPaint}>
