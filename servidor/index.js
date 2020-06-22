@@ -1,13 +1,15 @@
 const express = require('express');
+const connectDB = require('./config/db');
+const cors = require('cors');
 
 const app = express();
 
+connectDB();
+app.use(cors());
+
 app.use(express.json({ extended: true }));
 
-app.get('/poligons?name=mex', (req, res) => {
-  console.log(res.params);
-  res.status(200).json('msg: ok');
-});
+app.use('/', require('./routes/'));
 
 app.listen(4000, () => {
   console.log('server');

@@ -1,0 +1,45 @@
+.Search {
+  position: relative;
+  &-container {
+    background-color: #193041;
+    height: 98vh;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(50, 31, 31, 0.6);
+  }
+  &-title {
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid #8bb4ca;
+    & p {
+      margin: 0 20px;
+    }
+  }
+  &-Logo {
+    display: block;
+    margin: auto;
+  }
+}
+
+.Search {
+  box-sizing: border-box;
+  &-btn {
+    position: absolute;
+    top: 30px;
+    left: 300px;
+  }
+
+  &-Group {
+    background-color: #0e1c27;
+    padding: 10px;
+    margin: 10px 25px;
+  }
+}
+
+.first-child {
+  margin: 0 !important;
+}
+
+.last-child {
+  border-top: 1px solid #193041;
+  margin: 0 !important;
+}

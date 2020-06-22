@@ -1,53 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import React, { useContext, useEffect } from 'react'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 
-import axios from 'axios';
-import Menu from '../Menu';
+import Menu from '../Menu'
+import './Map.scss'
 
-import './Map.css';
+import useFetchData from '../../hook/useFetchData'
+
+import PolygonContext from '../../context/polygonContext'
 
 const Mapa = () => {
-  const [state, setState] = useState([]);
+  const Map = ReactMapboxGl({
+    accessToken: 'pk.eyJ1IjoiaXNtYWVsamR6NyIsImEiOiJja2Jtdjg3bG4xbXFiMnhxaTVuazlqajk5In0.kdZZsH6POuos7P2yF0HqoQ',
+  })
+
+  const polygonPaint = {
+    'fill-color': '#6F788A',
+    'fill-opacity': 0.7,
+  }
+  const data = useFetchData('GDL')
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(
-        `https://gist.githubusercontent.com/angellagunas/9ec0c2f02e960cd598b1ff3edc64a588/raw/63d6e8fc32964d843f32369f17c65869f74b8b3e/cdmx.geojson`
-      );
-      //console.log(result.data.features[0].geometry.coordinates);
-      setState(result.data.features[0].geometry.coordinates);
-    };
+    traerCoordenadas(data)
+    // eslint-disable-next-line
+  }, [data])
 
-    fetchData();
-  }, []);
-
-  const Map = ReactMapboxGl({
-    accessToken:
-      'pk.eyJ1IjoiaXNtYWVsamR6NyIsImEiOiJja2Jtdjg3bG4xbXFiMnhxaTVuazlqajk5In0.kdZZsH6POuos7P2yF0HqoQ'
-  });
+  const PolygonsContext = useContext(PolygonContext)
+  const { traerCoordenadas, coordinates } = PolygonsContext
 
   return (
     <>
-      <div className="Mapa-container">
+      <div className='Mapa-container'>
         <Map
-          style="mapbox://styles/mapbox/streets-v9"
+          style='mapbox://styles/mapbox/streets-v9'
+          center={[-101.9846394837815, 20.45716997382206]}
+          zoom={[7]}
           containerStyle={{
-            height: '100vh',
-            width: '80vw'
+            height: '98vh',
+            width: '80vw',
           }}
         >
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ 'icon-image': 'marker-15' }}
-          >
-            <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+          <Layer type='fill' paint={polygonPaint}>
+            <Feature coordinates={coordinates} />
           </Layer>
         </Map>
         <Menu />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Mapa;
+export default Mapa

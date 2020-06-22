@@ -1,4 +1,4 @@
-## Fullstack MERN Tasks
+## Fullstack MERN Map polygons
 
 ![Captura de la app](./.static-files/map.png)
 
